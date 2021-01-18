@@ -26,8 +26,10 @@ if(isset($_POST["contratar_funcionario"])) {
     $usr_ip = $_SERVER['REMOTE_ADDR'];
     $sql_insertlog = mysqli_query($conn, "INSERT INTO logs(usr_habbo, msg, usr_ip, log_tipo) VALUES('{$usuarioNome}', 'Contratou o funcionário {$usr}', '{$usr_ip}', '1')");
     $query_inserir = mysqli_query($conn, "INSERT INTO membros(usr_habbo, usr_patente, usr_responsavel) VALUES('{$usr}', '{$cargo}', '{$usuarioNome}')");
-    $query_relatorio_ts = mysqli_query($conn, "INSERT INTO relatorios(usr_habbo, recrutas, observacoes, motivo, tipo, status) VALUES('{$usuarioNome}', '{$usr}', '{$obs}', '{$motivo}', '1', '1')");
+    $descricao = "Contratou o funcionário: ".$usr."; Observações: ".$obs.";";
+    $query_insert_relatorio = mysqli_query($conn, "INSERT INTO new_relatorios(nickname, descricao, tipo) VALUES('{$usuarioNome}', '{$descricao}', 1)");
 
+    
     echo "<script type='text/javascript'>alert('Funcionário contratado com sucesso.');window.location.href='painel.php';</script>";
 }
 
@@ -48,7 +50,7 @@ elseif(isset($_POST['enviar_base'])) {
     $horario = empty($_POST['horario']) ? date('d/m/Y H:i:s') : $_POST['horario'];
     $nicknames = $_POST['nicknames'];
 
-    $descricao = 'Realizador da chamada: '.$chamada.'; Horário: '.$horario.'; Nicks presentes'.$nicknames.';';
+    $descricao = 'Realizador da chamada: '.$chamada.'; Horário: '.$horario.'; Nicks presentes: <strong>'.$nicknames.'</strong>;';
     $query_insert_relatorio = mysqli_query($conn, "INSERT INTO new_relatorios(nickname, descricao, tipo) VALUES('{$usuarioNome}', '{$descricao}', 2)");
     echo "<script type='text/javascript'>alert('Relatório enviado com sucesso!');window.location.href='painel.php';</script>";
 
