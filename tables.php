@@ -137,7 +137,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 endif; ?>
 
 
-                                    <?php if($typeform == "ver_avais" && $patente_id <= 5): ?>
+                                    <?php if($typeform == "ver_avais" && $perm > 0): ?>
                                     
                                   <table id="tableRelatorios" class="table table-borderless table-data3">
                                     <thead>

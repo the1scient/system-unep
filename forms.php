@@ -389,7 +389,7 @@ $observacoes = htmlspecialchars($_POST['observacoes']);
     if($num_select_guia > 0) {
         $sql_new_guia = mysqli_query($conn, "INSERT INTO guias(nickname, cargo) VALUES('{$nickname_guia}', 1)");
         $usr_ip = $_SERVER['REMOTE_ADDR'];
-        $sql_insertlog = mysqli_query($conn, "INSERT INTO logs(usr_habbo, msg, usr_ip, log_tipo) VALUES('{$usuarioNome}', 'Adicionou {$nickname_guia} para os guias. Motivo: {$observacoes}', '{$usr_ip}', '1')");
+        $sql_insertlog = mysqli_query($conn, "INSERT INTO logs(usr_habbo, msg, usr_ip, log_tipo) VALUES('{$usuarioNome}', 'Adicionou {$nickname_guia} no D.I. Motivo: {$observacoes}', '{$usr_ip}', '1')");
         $sql_insertnoti = mysqli_query($conn, "INSERT INTO notificacoes(enviado_por, user, msg, noti_type) VALUES('{$usuarioNome}', '{$nick}', 'Você foi adicionado aos guias! Motivos/descrições: {$motivos}', '1')");
         echo "<script type='text/javascript'>alert('Guia adicionado com sucesso!');window.location.href='painel.php';</script>";
 
@@ -437,7 +437,7 @@ elseif(isset($_POST['add_professor'])) {
             if($num_select_guia > 0) {
                 $sql_new_guia = mysqli_query($conn, "INSERT INTO instrutores(nickname, cargo) VALUES('{$nickname_guia}', 1)");
                 $usr_ip = $_SERVER['REMOTE_ADDR'];
-                $sql_insertlog = mysqli_query($conn, "INSERT INTO logs(usr_habbo, msg, usr_ip, log_tipo) VALUES('{$usuarioNome}', 'Adicionou {$nickname_guia} para os instrutores. Motivo: {$observacoes}', '{$usr_ip}', '1')");
+                $sql_insertlog = mysqli_query($conn, "INSERT INTO logs(usr_habbo, msg, usr_ip, log_tipo) VALUES('{$usuarioNome}', 'Adicionou {$nickname_guia} para o RH. Motivo: {$observacoes}', '{$usr_ip}', '1')");
                 $sql_insertnoti = mysqli_query($conn, "INSERT INTO notificacoes(enviado_por, user, msg, noti_type) VALUES('{$usuarioNome}', '{$nick}', 'Você foi adicionado aos instrutores! Motivos/descrições: {$motivos}', '1')");
                 echo "<script type='text/javascript'>alert('Professor adicionado com sucesso!');window.location.href='painel.php';</script>";
         
@@ -617,7 +617,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                 <div class="recent-report2">
                                     <h3 class="title-3"></h3>
                                     
-                                    <?php if($typeform == "aval" && $patente_id <= 14): ?>
+                                    <?php if($typeform == "aval"): ?>
                                         <div class="card">
                                     <div class="card-header">
                                        Solicitar <strong>Aval</strong>

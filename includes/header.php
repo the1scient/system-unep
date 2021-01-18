@@ -207,7 +207,10 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                     <a href="tables.php?type=ver_historico">
                                    <i class="fas fa-search"></i>Ver histórico</a>
                                 </li>
-                                
+                                <li>
+                                    <a href="tables.php?type=ver_avais">
+                                   <i class="fas fa-search"></i>Ver avais</a>
+                                </li>
                                 <li>
                                     <a href="forms.php?type=setar_patente">
                                    <i class="fas fa-group"></i>Definir patente</a>
@@ -235,6 +238,10 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </span>
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                    <a href="forms.php?type=aval">
+                                        <i class="fas fa-sign-in-alt"></i>Solicitar Aval</a>
+                            </li>
                             <li>
                                     <a href="forms.php?type=relatorio_base">
                                         <i class="fas fa-sign-in-alt"></i>Relatório de Base</a>
