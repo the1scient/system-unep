@@ -395,7 +395,7 @@ elseif($tipo == "reprovar_cfo") {
     if($count_perm > 0) {
 
         echo "<script type='text/javascript'>alert('Usuário promovido com sucesso! Log guardado.');window.location.href='../tables.php?type=ver_guias';</script>";
-        $sql_insertlog = mysqli_query($conn, "INSERT INTO logs(usr_habbo, msg, usr_ip, log_tipo) VALUES('{$usuarioNome}', 'Transformou {$u_nick} em guia líder', '{$usr_ip}', '1')");
+        $sql_insertlog = mysqli_query($conn, "INSERT INTO logs(usr_habbo, msg, usr_ip, log_tipo) VALUES('{$usuarioNome}', 'Transformou {$u_nick} em membro do RH líder', '{$usr_ip}', '1')");
     $sql_update_perm = mysqli_query($conn, "UPDATE guias SET cargo = 2 WHERE nickname = '{$u_nick}'");
 }
     else {
@@ -433,7 +433,7 @@ elseif($tipo == "reprovar_cfo") {
     if($count_perm > 0) {
 
         echo "<script type='text/javascript'>alert('Usuário promovido com sucesso! Log guardado.');window.location.href='../tables.php?type=ver_instrutores';</script>";
-        $sql_insertlog = mysqli_query($conn, "INSERT INTO logs(usr_habbo, msg, usr_ip, log_tipo) VALUES('{$usuarioNome}', 'Transformou {$u_nick} em instrutor líder', '{$usr_ip}', '1')");
+        $sql_insertlog = mysqli_query($conn, "INSERT INTO logs(usr_habbo, msg, usr_ip, log_tipo) VALUES('{$usuarioNome}', 'Transformou {$u_nick} em membro do DI líder', '{$usr_ip}', '1')");
     $sql_update_perm = mysqli_query($conn, "UPDATE instrutores SET cargo = 2 WHERE nickname = '{$u_nick}'");
 }
     else {
