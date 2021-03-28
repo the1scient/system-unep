@@ -1,5 +1,5 @@
 <?php 
-include_once("global.php");
+include_once("app/global.php");
 $consulta = htmlspecialchars($_GET['consulta']);
 
 $get_user_infos = mysqli_query($conn, "SELECT * FROM membros WHERE usr_habbo LIKE '{$consulta}%'");

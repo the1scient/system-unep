@@ -1,3 +1,3 @@
 <?php 
-header("Location: kernel/logout.php");
+	header("Location: kernel/logout.php");
 ?>
