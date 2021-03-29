@@ -1,19 +1,17 @@
 <?php 
-include("global.php");
-include("kernel/verifica_login.php");
-include("kernel/get_user_patente.php");
-include("kernel/get_patente.php");
-$usuarioNome = $_SESSION["usuario"];
-$typeform = htmlspecialchars($_GET["type"]);
-$getuserperm = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_perm >= 1");
-$perm = mysqli_num_rows($getuserperm);
+    include("app/global.php");
+    include("kernel/verifica_login.php");
+    include("kernel/get_user_patente.php");
+    include("kernel/get_patente.php");
+    $usuarioNome = $_SESSION["usuario"];
+    $typeform = htmlspecialchars($_GET["type"]);
+    $getuserperm = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_perm >= 1");
+    $perm = mysqli_num_rows($getuserperm);
 
 
-$getusersudo = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}'");
-$sqlfetchsudo = mysqli_fetch_array($getusersudo);
-$usr_sudo = $sqlfetchsudo["usr_perm"];
-
-
+    $getusersudo = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}'");
+    $sqlfetchsudo = mysqli_fetch_array($getusersudo);
+    $usr_sudo = $sqlfetchsudo["usr_perm"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,12 +56,12 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
 <body class="animsition">
     <div class="page-wrapper">
 
-        <?php include("includes/sidebar.php");?>
+        <?php include("struct/sidebar.php");?>
 
         <!-- PAGE CONTAINER-->
         <div class="page-container2">
             <!-- HEADER DESKTOP-->
-            <?php include("includes/header.php"); ?>
+            <?php include("struct/header.php"); ?>
             
             <!-- END HEADER DESKTOP-->
 
@@ -89,7 +87,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                     
                                     <?php 
                                 
-                                    if($typeform == "ver_policiais"):
+                                    if($typeform == "ver_policiais") {
                                         
                                         echo '  <table id="tableRelatorios" class="table table-borderless table-data3">
                                         <thead>
@@ -134,10 +132,10 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </tr>
                             </tbody>
                         </table>';
-                                endif; ?>
+                                } ?>
 
 
-                                    <?php if($typeform == "ver_avais" && $perm > 0): ?>
+                                    <?php if($typeform == "ver_avais" && $perm > 0) { ?>
                                     
                                   <table id="tableRelatorios" class="table table-borderless table-data3">
                                     <thead>
@@ -198,7 +196,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </tr>
                         </tbody>
                     </table>
-            <?php    endif;  ?>
+            <?php    }  ?>
 
 
 
@@ -226,7 +224,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
 
 
 
-                                    <?php if($typeform == "gerusers" && $usr_sudo > 1): 
+                                    <?php if($typeform == "gerusers" && $usr_sudo > 1) { 
                                     echo '  <div class="row m-t-30">
                                     <div class="col-md-12">
                                         <!-- DATA TABLE-->
@@ -285,7 +283,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 <!-- END DATA TABLE-->
                             </div>
                         </div>';
-                                endif; ?>
+                                } ?>
 
 
                                 
@@ -296,7 +294,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                     $num_select_guia = mysqli_num_rows($sql_select_guia);
                                     
                                     
-                                    if($typeform == "ver_guias" && $num_select_guia > 0):
+                                    if($typeform == "ver_guias" && $num_select_guia > 0) {
                                         $fetch_select_guia = mysqli_fetch_array($sql_select_guia);
                                         $get_cargo_guia = $fetch_select_guia["cargo"];
                                         echo '  <table id="tableRelatorios" class="table table-borderless table-data3">
@@ -331,11 +329,11 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                                 break;
                                                 }
                                                 echo $cgg; ?></td>
-                                                <?php if($get_cargo_guia > 1):?>
+                                                <?php if($get_cargo_guia > 1) {?>
                                                 <td><a style="color: red;" href="kernel/action.php?tipo=remover_guia&nickname=<?php echo $resguias["nickname"]; ?> "><i class="fa fa-gavel"></i> Remover membro</a>
-                                                <?php if($perm): ?><br> <a style="color: green;" href="kernel/action.php?tipo=transformar_lider_guia&nickname=<?php echo $resguias["nickname"]; ?> "><i class="fa fa-arrow-up"></i> Tornar líder</a><?php endif; ?>
+                                                <?php if($perm) { ?><br> <a style="color: green;" href="kernel/action.php?tipo=transformar_lider_guia&nickname=<?php echo $resguias["nickname"]; ?> "><i class="fa fa-arrow-up"></i> Tornar líder</a><?php } ?>
                                                 </td>
-                                                <?php endif; ?>
+                                                <?php } ?>
                                               
                                               
                                                <!--  -->
@@ -346,7 +344,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </tr>
                             </tbody>
                         </table>';
-                                endif; ?>
+                                } ?>
 
 
 
@@ -356,7 +354,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                     $num_select_guia = mysqli_num_rows($sql_select_guia);
                                
                                     
-                                    if($typeform == "ver_professores" && $num_select_guia > 0):
+                                    if($typeform == "ver_professores" && $num_select_guia > 0) {
                                         $fetch_select_guia = mysqli_fetch_array($sql_select_guia);
                                         $get_cargo_guia = $fetch_select_guia["cargo"];
                                         echo '  <table id="tableRelatorios" class="table table-borderless table-data3">
@@ -391,11 +389,11 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                                 break;
                                                 }
                                                 echo $cgg; ?></td>
-                                                <?php if($get_cargo_guia > 1):?>
+                                                <?php if($get_cargo_guia > 1) {?>
                                                 <td><a style="color: red;" href="kernel/action.php?tipo=remover_professor&nickname=<?php echo $resguias["nickname"]; ?> "><i class="fa fa-gavel"></i> Remover professor</a>
-                                                <?php if($perm): ?><br> <a style="color: green;" href="kernel/action.php?tipo=transformar_lider_professor&nickname=<?php echo $resguias["nickname"]; ?> "><i class="fa fa-arrow-up"></i> Tornar líder</a><?php endif; ?>
+                                                <?php if($perm) { ?><br> <a style="color: green;" href="kernel/action.php?tipo=transformar_lider_professor&nickname=<?php echo $resguias["nickname"]; ?> "><i class="fa fa-arrow-up"></i> Tornar líder</a><?php } ?>
                                                 </td>
-                                                <?php endif; ?>
+                                                <?php } ?>
                                               
                                               
                                                <!--  -->
@@ -406,7 +404,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </tr>
                             </tbody>
                         </table>';
-                                endif; ?>
+                                } ?>
 
 
 
@@ -420,7 +418,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                     $fetch_select_ins = mysqli_fetch_array($sql_select_ins);
                                     $get_cargo_ins = $fetch_select_ins["cargo"];
                                     
-                                    if($typeform == "ver_instrutores" && $num_select_ins > 0):
+                                    if($typeform == "ver_instrutores" && $num_select_ins > 0) {
                                     
                                         echo '  <table id="tableRelatorios" class="table table-borderless table-data3">
                                         <thead>
@@ -454,11 +452,11 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                                 break;
                                                 }
                                                 echo $cgg; ?></td>
-                                                <?php if($fetch_select_ins['cargo'] >= 2):?>
+                                                <?php if($fetch_select_ins['cargo'] >= 2) {?>
                                                 <td><a style="color: red;" href="kernel/action.php?tipo=remover_instrutores&nickname=<?php echo $resins["nickname"]; ?> "><i class="fa fa-gavel"></i> Remover membro</a>
-                                                <?php if($perm): ?><br> <a style="color: green;" href="kernel/action.php?tipo=transformar_lider_instrutores&nickname=<?php echo $resins["nickname"]; ?> "><i class="fa fa-arrow-up"></i> Tornar líder</a><?php endif; ?>
+                                                <?php if($perm) { ?><br> <a style="color: green;" href="kernel/action.php?tipo=transformar_lider_instrutores&nickname=<?php echo $resins["nickname"]; ?> "><i class="fa fa-arrow-up"></i> Tornar líder</a><?php } ?>
                                                 </td>
-                                                <?php endif; ?>
+                                                <?php } ?>
                                               
                                               
                                                <!--  -->
@@ -469,7 +467,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </tr>
                             </tbody>
                         </table>';
-                    endif; } ?>
+                    } } ?>
 
 
 
@@ -493,7 +491,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
 <?php 
                                     
                                     
-                                    if($typeform == "ver_historico" && $perm > 0): ?>
+                                    if($typeform == "ver_historico" && $perm > 0) { ?>
                                     
                                          <table id='tableRelatorios'class="table table-borderless table-data3">
                                         <thead>
@@ -576,7 +574,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </tr>
                             </tbody>
                         </table>
-                               <?php endif; ?>
+                               <?php } ?>
 
 
 
@@ -613,7 +611,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                     $num_select_guia = mysqli_num_rows($sql_select_guia);
                                     
                                     
-                                    if($typeform == "relatorios_guias" && $num_select_guia > 0): ?>
+                                    if($typeform == "relatorios_guias" && $num_select_guia > 0) { ?>
                                     
                                          <table id='tableRelatorios'class="table table-borderless table-data3">
                                         <thead>
@@ -669,7 +667,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </tr>
                             </tbody>
                         </table>
-                               <?php endif; ?>
+                               <?php } ?>
 
 
 
@@ -679,7 +677,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                     $num_select_ins = mysqli_num_rows($sql_select_ins);
                                     
                                     
-                                    if($typeform == "ver_cfos" && $num_select_ins > 0): ?>
+                                    if($typeform == "ver_cfos" && $num_select_ins > 0) { ?>
                                     
                                          <table id='tableRelatorios'class="table table-borderless table-data3">
                                         <thead>
@@ -732,7 +730,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </tr>
                             </tbody>
                         </table>
-                               <?php endif; ?>
+                               <?php } ?>
 
 
 
@@ -750,7 +748,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                     $num_select_guia = mysqli_num_rows($sql_select_guia);
                                     
                                     
-                                    if($typeform == "relatorios_professores" && $num_select_guia > 0): ?>
+                                    if($typeform == "relatorios_professores" && $num_select_guia > 0) { ?>
                                     
                                          <table id='tableRelatorios'class="table table-borderless table-data3">
                                         <thead>
@@ -800,7 +798,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </tr>
                             </tbody>
                         </table>
-                               <?php endif; ?>
+                               <?php } ?>
 
 
 
@@ -813,7 +811,7 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                     $num_select_guia = mysqli_num_rows($sql_select_guia);
                                     
                                     
-                                    if($typeform == "relatorios_instrutores" && $num_select_guia > 0): ?>
+                                    if($typeform == "relatorios_instrutores" && $num_select_guia > 0) { ?>
                                     
                                          <table id='tableRelatorios'class="table table-borderless table-data3">
                                         <thead>
@@ -866,14 +864,14 @@ $usr_sudo = $sqlfetchsudo["usr_perm"];
                                 </tr>
                             </tbody>
                         </table>
-                               <?php endif; ?>
+                               <?php } ?>
 
 
                                <?php 
 $sql_select_guia = mysqli_query($conn, "SELECT * FROM instrutores WHERE nickname = '{$usuarioNome}'");
 $num_select_guia = mysqli_num_rows($sql_select_guia);
 
-if($typeform == "documento_aula_rh" && $num_select_guia > 0):
+if($typeform == "documento_aula_rh" && $num_select_guia > 0) {
 
 ?>
 <p>AULA R.H 2021</p>
@@ -950,13 +948,13 @@ if($typeform == "documento_aula_rh" && $num_select_guia > 0):
 <p>Essa fun&ccedil;&atilde;o &eacute; importante, para que a planilha seja atualizada, e todos estejam em seus conformes cargos.</p>
 <p><br></p>
 <p>AlefAle | R.H &copy;</p>
-<?php endif; ?>
+<?php } ?>
 
 
 <?php 
  $sql_select_guia = mysqli_query($conn, "SELECT * FROM guias WHERE nickname = '{$usuarioNome}'");
  $num_select_guia = mysqli_num_rows($sql_select_guia);
- if($typeform == "documentos_di" &&  $num_select_guia > 0):
+ if($typeform == "documentos_di" &&  $num_select_guia > 0) {
 ?>
 <form id="form1" method="post">
 
@@ -978,7 +976,7 @@ if($typeform == "documento_aula_rh" && $num_select_guia > 0):
 
 <iframe id="myIframe" src="" frameborder="0" marginwidth="0" marginheight="0" width="100%" height="600" allowfullscreen scrolling="yes"></iframe>
 
-<?php endif; ?>
+<?php } ?>
 
 
 
@@ -1002,7 +1000,7 @@ if($typeform == "documento_aula_rh" && $num_select_guia > 0):
                 </div>
             </section>
 <!-- Fim sistema de formulários -->
-           <?php include("includes/footer.php"); ?>
+           <?php include("struct/footer.php"); ?>
             <!-- END PAGE CONTAINER-->
         </div>
 

@@ -20,7 +20,7 @@ include("kernel/verifica_login.php");
     <title><?php echo $titulo_site ?> - Notificações</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="assets/css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -39,7 +39,7 @@ include("kernel/verifica_login.php");
     <link href="vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="assets/css/theme.css" rel="stylesheet" media="all">
     <style>
 .ttype-user {
   position: relative;
@@ -69,16 +69,16 @@ include("kernel/verifica_login.php");
 <body class="animsition">
     <div class="page-wrapper">
 
-        <?php include("includes/sidebar.php");?>
+        <?php include("struct/sidebar.php");?>
 
         <!-- PAGE CONTAINER-->
         <div class="page-container2">
             <!-- HEADER DESKTOP-->
-            <?php include("includes/header.php"); ?>
+            <?php include("struct/header.php"); ?>
             
             <!-- END HEADER DESKTOP-->
 
-           <?php include("includes/breadcrumb.php"); ?>
+           <?php include("struct/breadcrumb.php"); ?>
 
             <!-- STATISTIC-->
             <section class="statistic">
@@ -136,7 +136,7 @@ include("kernel/verifica_login.php");
                 </div>
             </section>
 
-           <?php include("includes/footer.php"); ?>
+           <?php include("struct/footer.php"); ?>
             <!-- END PAGE CONTAINER-->
         </div>
 
@@ -168,7 +168,7 @@ include("kernel/verifica_login.php");
     <script src="vendor/vector-map/jquery.vmap.world.js"></script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 
 </body>
 

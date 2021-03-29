@@ -75,7 +75,7 @@ if($count_exist_member <= 0)
     <title>Perfil de <?php echo $usr_nome ?> - <?php echo $titulo_site ?></title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="assets/css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -94,7 +94,7 @@ if($count_exist_member <= 0)
     <link href="vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="assets/css/theme.css" rel="stylesheet" media="all">
     <style>
 .ttype-user {
   position: relative;
@@ -127,16 +127,16 @@ if($count_exist_member <= 0)
 <body class="animsition">
     <div class="page-wrapper">
 
-        <?php include("includes/sidebar.php");?>
+        <?php include("struct/sidebar.php");?>
 
         <!-- PAGE CONTAINER-->
         <div class="page-container2">
             <!-- HEADER DESKTOP-->
-            <?php include("includes/header.php"); ?>
+            <?php include("struct/header.php"); ?>
             
             <!-- END HEADER DESKTOP-->
 
-           <?php include("includes/breadcrumb.php"); ?>
+           <?php include("struct/breadcrumb.php"); ?>
 
             <!-- STATISTIC-->
             <section class="statistic">
@@ -196,17 +196,17 @@ if($count_exist_member <= 0)
                                             </a>
                                             <?php 
                                             # begin promoção
-                                          if($self_perm_promover > 0 && $usr != $usuarioNome):
+                                          if($self_perm_promover > 0 && $usr != $usuarioNome) {
 
                                             ?><br>
                                             <span style='color: white; font-weight: bold; font-size: 16px;'>Ações: &nbsp;</span>
                                            <a class="promocao" href="forms.php?type=promover&user=<?php echo $usr_nome ?>" style="color: white; background-color: green; border-radius: 6px; padding: 3px;">
                                                 <i class="fa fa-pinterest pr-1"></i>Promover
                                             </a>
-                                            <?php  endif; ?>
+                                            <?php  } ?>
                                             <?php 
                                             # begin rebaixar
-                                          if($self_perm_rebaixar > 0 && $usr != $usuarioNome):
+                                          if($self_perm_rebaixar > 0 && $usr != $usuarioNome) {
 
                                             ?>
                                              <a class="rebaixar" href="forms.php?type=advertir&user=<?php echo $usr_nome ?>" style="color: white; background-color: orange; border-radius: 6px; padding: 3px;">
@@ -219,10 +219,10 @@ if($count_exist_member <= 0)
                                             <a class="demitir" href="forms.php?type=demitir&user=<?php echo $usr_nome ?>" style="color: white; background-color: red; border-radius: 6px; padding: 3px;">
                                                 <i class="fa fa-pinterest pr-1"></i>Demitir
                                             </a>
-                                            <?php  endif; ?>
+                                            <?php  } ?>
                                                 
                                             <br>
-                                            <?php if($count_get_perm > 0): ?>
+                                            <?php if($count_get_perm > 0) { ?>
                                             <br><br>
                                                 <span style='color: red; font-weight: bold; font-size: 16px;'>Ações Administrativas: &nbsp;</span>
                                                 <a class="mudar_senha" href="forms.php?type=mudar_user_senha&user=<?php echo $usr_nome ?>" style="color: white; background-color: red; border-radius: 6px; padding: 3px;">
@@ -232,7 +232,7 @@ if($count_exist_member <= 0)
                                                 <i class="fa fa-pinterest pr-1"></i>Definir patente executivo/militar
                                             </a>
                                            
-                                            <?php endif; ?>
+                                            <?php } ?>
 
                                         </div>
                                     </div>
@@ -303,7 +303,7 @@ if($count_exist_member <= 0)
                 </div>
             </section>
 
-           <?php include("includes/footer.php"); ?>
+           <?php include("struct/footer.php"); ?>
             <!-- END PAGE CONTAINER-->
         </div>
 
@@ -335,10 +335,9 @@ if($count_exist_member <= 0)
     <script src="vendor/vector-map/jquery.vmap.world.js"></script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 
 </body>
 
 </html>
 <!-- end document-->
-

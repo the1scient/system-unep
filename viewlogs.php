@@ -1,5 +1,5 @@
 <?php 
-include("global.php");
+include("app/global.php");
 include("kernel/verifica_login.php");
 include("kernel/get_patente.php");
 $usuarioNome = $_SESSION["usuario"];
@@ -28,7 +28,7 @@ if($perm == 0) {
     <title><?php echo $titulo_site ?> - Ver Logs</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="assets/css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -47,19 +47,19 @@ if($perm == 0) {
     <link href="vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="assets/css/theme.css" rel="stylesheet" media="all">
     
 </head>
 
 <body class="animsition">
     <div class="page-wrapper">
 
-        <?php include("includes/sidebar.php");?>
+        <?php include("struct/sidebar.php");?>
 
         <!-- PAGE CONTAINER-->
         <div class="page-container2">
             <!-- HEADER DESKTOP-->
-            <?php include("includes/header.php"); ?>
+            <?php include("struct/header.php"); ?>
             
             <!-- END HEADER DESKTOP-->
 
@@ -157,7 +157,7 @@ if($perm == 0) {
                 </div>
             </section>
 <!-- Fim sistema de formulários -->
-           <?php include("includes/footer.php"); ?>
+           <?php include("struct/footer.php"); ?>
             <!-- END PAGE CONTAINER-->
         </div>
 
@@ -189,7 +189,7 @@ if($perm == 0) {
     <script src="vendor/vector-map/jquery.vmap.world.js"></script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
+    <script src="assets/js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
     <script>

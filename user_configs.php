@@ -1,34 +1,27 @@
 <?php 
-include("global.php");
-include("kernel/verifica_login.php");
-$usuarioNome = $_SESSION["usuario"];
+    include("app/global.php");
+    include("kernel/verifica_login.php");
+    $usuarioNome = $_SESSION["usuario"];
 
-if(isset($_POST["alterar_senha"])) {
-  $raw_senha_atual = htmlspecialchars($_POST["senha_atual"]);
-  $raw_senha_nova = htmlspecialchars($_POST["senha_nova"]);
+    if(isset($_POST["alterar_senha"])) {
+        $raw_senha_atual = htmlspecialchars($_POST["senha_atual"]);
+        $raw_senha_nova = htmlspecialchars($_POST["senha_nova"]);
 
-  $senha_atual = md5($raw_senha_atual);
-  $senha_nova = md5($raw_senha_nova);
+        $senha_atual = md5($raw_senha_atual);
+        $senha_nova = md5($raw_senha_nova);
 
-  # Comparação de senhas
-$sql_select_user_senha = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_senha = '{$senha_atual}'");
-$count_select_user_senha = mysqli_num_rows($sql_select_user_senha);
+        # Comparação de senhas
+        $sql_select_user_senha = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_senha = '{$senha_atual}'");
+        $count_select_user_senha = mysqli_num_rows($sql_select_user_senha);
 
-if($count_select_user_senha <= 0) {
-    echo '<script type="text/javascript">alert("Senha atual errada! \n Log guardado.");window.location.href="";</script>';
-}
-else {
-$update_u_senha = mysqli_query($conn, "UPDATE painel SET usr_senha = '{$senha_nova}' WHERE usr_habbo = '{$usuarioNome}'");
-    echo '<script type="text/javascript">alert("Senha alterada! \n Faça login novamente.");window.location.href="logout.php";</script>';
-
-}
-
-
-}
-
-
-
-
+        if($count_select_user_senha <= 0) {
+            echo '<script type="text/javascript">alert("Senha atual errada! \n Log guardado.");window.location.href="";</script>';
+        }
+        else {
+            $update_u_senha = mysqli_query($conn, "UPDATE painel SET usr_senha = '{$senha_nova}' WHERE usr_habbo = '{$usuarioNome}'");
+            echo '<script type="text/javascript">alert("Senha alterada! \n Faça login novamente.");window.location.href="logout.php";</script>';
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +39,7 @@ $update_u_senha = mysqli_query($conn, "UPDATE painel SET usr_senha = '{$senha_no
     <title><?php echo $titulo_site ?> - Painel</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="assets/css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -65,19 +58,19 @@ $update_u_senha = mysqli_query($conn, "UPDATE painel SET usr_senha = '{$senha_no
     <link href="vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="assets/css/theme.css" rel="stylesheet" media="all">
  
 </head>
 
 <body class="animsition">
     <div class="page-wrapper">
 
-        <?php include("includes/sidebar.php");?>
+        <?php include("struct/sidebar.php");?>
 
         <!-- PAGE CONTAINER-->
         <div class="page-container2">
             <!-- HEADER DESKTOP-->
-            <?php include("includes/header.php"); ?>
+            <?php include("struct/header.php"); ?>
             
             <!-- END HEADER DESKTOP-->
 
@@ -177,7 +170,7 @@ $update_u_senha = mysqli_query($conn, "UPDATE painel SET usr_senha = '{$senha_no
                 </div>
             </section>
 <!-- Fim sistema de formulários -->
-           <?php include("includes/footer.php"); ?>
+           <?php include("struct/footer.php"); ?>
             <!-- END PAGE CONTAINER-->
         </div>
 
@@ -209,7 +202,7 @@ $update_u_senha = mysqli_query($conn, "UPDATE painel SET usr_senha = '{$senha_no
     <script src="vendor/vector-map/jquery.vmap.world.js"></script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 
 </body>
 

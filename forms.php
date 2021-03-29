@@ -1,5 +1,5 @@
 <?php 
-include("global.php");
+include("app/global.php");
 include("kernel/verifica_login.php");
 include("kernel/get_patente.php");
 $usuarioNome = $_SESSION["usuario"];
@@ -564,7 +564,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
     <title><?php echo $titulo_site ?> - Painel</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="assets/css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -583,19 +583,19 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
     <link href="vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="assets/css/theme.css" rel="stylesheet" media="all">
  
 </head>
 
 <body class="animsition">
     <div class="page-wrapper">
 
-        <?php include("includes/sidebar.php");?>
+        <?php include("struct/sidebar.php");?>
 
         <!-- PAGE CONTAINER-->
         <div class="page-container2">
             <!-- HEADER DESKTOP-->
-            <?php include("includes/header.php"); ?>
+            <?php include("struct/header.php"); ?>
             
             <!-- END HEADER DESKTOP-->
 
@@ -619,7 +619,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                 <div class="recent-report2">
                                     <h3 class="title-3"></h3>
                                     
-                                    <?php if($typeform == "aval"): ?>
+                                    <?php if($typeform == "aval"){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                        Solicitar <strong>Aval</strong>
@@ -662,7 +662,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
                                 
@@ -670,7 +670,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     <?php 
                                    
                                     
-                                    if($typeform == "add_contrato"): ?>
+                                    if($typeform == "add_contrato"){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Contratar</strong> Funcionário
@@ -753,7 +753,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -761,7 +761,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     $sql_select_guia = mysqli_query($conn, "SELECT * FROM guias WHERE nickname = '{$usuarioNome}'");
                                     $num_select_guia = mysqli_num_rows($sql_select_guia);
                                     
-                                    if($typeform == "add_t1" && $num_select_guia > 0): ?>
+                                    if($typeform == "add_t1" && $num_select_guia > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Adicionar</strong> T1 (Treinamento p/ Cabos)
@@ -799,7 +799,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -808,7 +808,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     $sql_select_guia = mysqli_query($conn, "SELECT * FROM guias WHERE nickname = '{$usuarioNome}' AND cargo = 2");
                                     $num_select_guia = mysqli_num_rows($sql_select_guia);
                                     
-                                    if($typeform == "add_t2" && $num_select_guia > 0): ?>
+                                    if($typeform == "add_t2" && $num_select_guia > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Adicionar</strong> T2 (Treinamento p/ Tenentes)
@@ -846,14 +846,14 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
                                     <?php 
                                  
                                     
-                                    if($typeform == "relatorio_ronda" && $patente_id <= 16): ?>
+                                    if($typeform == "relatorio_ronda" && $patente_id <= 16){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Relatório</strong> de Ronda
@@ -903,7 +903,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -914,7 +914,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     <?php 
                                  
                                     
-                                 if($typeform == "relatorio_base"): ?>
+                                 if($typeform == "relatorio_base"){ ?>
                                      <div class="card">
                                  <div class="card-header">
                                      <strong>Relatório</strong> de Base
@@ -965,7 +965,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                  </div>
                                 
                              </div>
-                                 <?php endif; ?>
+                                 <?php } ?>
 
 
 
@@ -975,7 +975,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                  <?php 
                                  
                                     
-                                 if($typeform == "relatorio_aula"): ?>
+                                 if($typeform == "relatorio_aula"){ ?>
                                      <div class="card">
                                  <div class="card-header">
                                      <strong>Relatório</strong> de Aula
@@ -1056,7 +1056,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                  </div>
                                 
                              </div>
-                                 <?php endif; ?>
+                                 <?php } ?>
 
 
 
@@ -1067,7 +1067,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                    $sql_select_pf = mysqli_query($conn, "SELECT * FROM professores WHERE nickname = '{$usuarioNome}'");
                                    $num_select_pf = mysqli_num_rows($sql_select_pf);
                                     
-                                    if($typeform == "add_te" && $num_select_pf > 0): ?>
+                                    if($typeform == "add_te" && $num_select_pf > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Adicionar</strong> Treinamento Especializado (p/ Sargentos)
@@ -1105,13 +1105,13 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
                                     <?php 
                                    $sql_select_pf = mysqli_query($conn, "SELECT * FROM professores WHERE nickname = '{$usuarioNome}'");
                                    $num_select_pf = mysqli_num_rows($sql_select_pf);
                                     
-                                    if($typeform == "add_tf" && $num_select_pf > 0): ?>
+                                    if($typeform == "add_tf" && $num_select_pf > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Adicionar</strong> Treinamento de Formação (p/ Subtenentes)
@@ -1149,7 +1149,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1158,7 +1158,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                $sql_select_ins = mysqli_query($conn, "SELECT * FROM instrutores WHERE nickname = '{$usuarioNome}'");
                                $num_select_ins = mysqli_num_rows($sql_select_ins);
                                     
-                                    if($typeform == "add_cfo" && $num_select_ins > 0): ?>
+                                    if($typeform == "add_cfo" && $num_select_ins > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Adicionar</strong> Curso de Formação de Oficiais (CFO)
@@ -1196,7 +1196,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1209,7 +1209,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     $sql_select_guia = mysqli_query($conn, "SELECT * FROM guias WHERE nickname = '{$usuarioNome}' AND cargo = 2");
                                     $num_select_guia = mysqli_num_rows($sql_select_guia);
                                     
-                                    if($typeform == "add_guia" && $num_select_guia > 0): ?>
+                                    if($typeform == "add_guia" && $num_select_guia > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Adicionar</strong> membro do D.I.
@@ -1246,13 +1246,13 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
                                     <?php 
                                     $sql_select_guia = mysqli_query($conn, "SELECT * FROM instrutores WHERE nickname = '{$usuarioNome}' AND cargo >= 2");
                                     $num_select_guia = mysqli_num_rows($sql_select_guia);
                                     
-                                    if($typeform == "add_funcionario" && $num_select_guia > 0): ?>
+                                    if($typeform == "add_funcionario" && $num_select_guia > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Criar conta</strong> para Funcionário no Painel
@@ -1288,14 +1288,14 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
                                     <?php 
                                     $sql_select_guia = mysqli_query($conn, "SELECT * FROM professores WHERE nickname = '{$usuarioNome}' AND cargo = 2");
                                     $num_select_guia = mysqli_num_rows($sql_select_guia);
                                     
-                                    if($typeform == "add_professor" && $num_select_guia > 0): ?>
+                                    if($typeform == "add_professor" && $num_select_guia > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Adicionar</strong> Professor
@@ -1332,7 +1332,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1343,7 +1343,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     $sql_select_ins = mysqli_query($conn, "SELECT * FROM instrutores WHERE nickname = '{$usuarioNome}' AND cargo >= 2");
                                $num_select_ins = mysqli_num_rows($sql_select_ins);
 
-                                    if($typeform == "add_instrutor" && $num_select_ins > 0): ?>
+                                    if($typeform == "add_instrutor" && $num_select_ins > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Adicionar</strong> membro do RH
@@ -1380,7 +1380,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1393,7 +1393,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     $sql_select_ins = mysqli_query($conn, "SELECT * FROM instrutores WHERE nickname = '{$usuarioNome}' AND cargo >= 2");
                                $num_select_ins = mysqli_num_rows($sql_select_ins);
                                     
-                                    if($typeform == "definir_tag" && $num_select_ins > 0): ?>
+                                    if($typeform == "definir_tag" && $num_select_ins > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Definir</strong> TAG
@@ -1431,7 +1431,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1449,7 +1449,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                    $getuserperm = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_perm >= 1");
                                    $perm = mysqli_num_rows($getuserperm);
 
-                                    if($typeform == "add_destaques" && $perm > 0): ?>
+                                    if($typeform == "add_destaques" && $perm > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Adicionar</strong> Destaques
@@ -1497,7 +1497,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1507,7 +1507,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                    $getuserperm = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_perm >= 1");
                                    $perm = mysqli_num_rows($getuserperm);
 
-                                    if($typeform == "atualizar_anuncio" && $perm > 0): ?>
+                                    if($typeform == "atualizar_anuncio" && $perm > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Atualizar</strong> Anúncio
@@ -1541,7 +1541,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1560,7 +1560,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                    $getuserperm = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_perm = 2");
                                    $perm = mysqli_num_rows($getuserperm);
 
-                                    if($typeform == "edit_lista_negra" && $perm > 0): ?>
+                                    if($typeform == "edit_lista_negra" && $perm > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Editar</strong> Lista Negra
@@ -1594,7 +1594,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1609,7 +1609,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                    $getuserperm = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_perm >= 1");
                                    $perm = mysqli_num_rows($getuserperm);
 
-                                    if($typeform == "readmitir_policial" && $perm > 0): ?>
+                                    if($typeform == "readmitir_policial" && $perm > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Atualizar</strong> Anúncio
@@ -1639,7 +1639,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1676,7 +1676,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                    $getuserperm = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_perm >= 1");
                                    $perm = mysqli_num_rows($getuserperm);
 
-                                    if($typeform == "setar_patente" && $perm > 0): ?>
+                                    if($typeform == "setar_patente" && $perm > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Definir</strong> Patente
@@ -1719,7 +1719,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1729,7 +1729,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                    $getuserperm = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_perm >= 1");
                                    $perm = mysqli_num_rows($getuserperm);
 
-                                    if($typeform == "mudar_user_senha" && $perm > 0): ?>
+                                    if($typeform == "mudar_user_senha" && $perm > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                         <strong>Alterar</strong> Senha
@@ -1767,14 +1767,14 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
 
 
 
-                                    <?php if($typeform == "promover" && $patente_id <= 13): ?>
+                                    <?php if($typeform == "promover" && $patente_id <= 13){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                        <strong>Promover</strong> Policial
@@ -1811,11 +1811,11 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
-                                    <?php if($typeform == "rebaixar" && $patente_id <= 12): ?>
+                                    <?php if($typeform == "rebaixar" && $patente_id <= 12){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                        <strong>Rebaixar</strong> Policial
@@ -1852,9 +1852,9 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
-                                    <?php if($typeform == "demitir" && $patente_id <= 12): ?>
+                                    <?php if($typeform == "demitir" && $patente_id <= 12){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                        <strong>Demitir</strong> Policial
@@ -1891,12 +1891,12 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
 
-                                    <?php if($typeform == "advertir" && $patente_id <= 12): ?>
+                                    <?php if($typeform == "advertir" && $patente_id <= 12){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                        <strong>Advertir</strong> Policial
@@ -1933,7 +1933,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -1946,7 +1946,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     $sql_get_sudo = mysqli_query($conn, "SELECT * FROM painel WHERE usr_habbo = '{$usuarioNome}' AND usr_perm = 2");
                                     $num_get_sudo = mysqli_num_rows($sql_get_sudo);
 
-                                    if($typeform == "dar_adm_painel" && $num_get_sudo > 0): ?>
+                                    if($typeform == "dar_adm_painel" && $num_get_sudo > 0){ ?>
                                         <div class="card">
                                     <div class="card-header">
                                        <strong>Dar</strong> Permissão de Admin
@@ -1985,7 +1985,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                                     </div>
                                    
                                 </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
 
@@ -2026,7 +2026,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
                 </div>
             </section>
 <!-- Fim sistema de formulários -->
-           <?php include("includes/footer.php"); ?>
+           <?php include("struct/footer.php"); ?>
             <!-- END PAGE CONTAINER-->
         </div>
 
@@ -2058,7 +2058,7 @@ echo '<script type="text/javascript">alert("Usuário readmitido com sucesso!");w
     <script src="vendor/vector-map/jquery.vmap.world.js"></script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
+    <script src="assets/js/main.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js"></script>
 

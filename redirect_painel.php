@@ -1,3 +1,3 @@
 <?php 
-header('Location: painel.php');
+	header('Location: painel.php');
 ?>
